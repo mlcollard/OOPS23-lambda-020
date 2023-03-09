@@ -116,7 +116,13 @@ int main(int argc, char* argv[]) {
     {
         std::istringstream input("2");
 
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = [&input](std::string_view s) {
+
+            int incr;
+            input >> incr;
+
+            return s.size() + incr;
+        };
 
         if (f) {
 
