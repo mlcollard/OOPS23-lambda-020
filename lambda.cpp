@@ -55,7 +55,10 @@ int main(int argc, char* argv[]) {
     // const variable capture reference
     {
         const int INCR = 2;
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = [](std::string_view s) {
+
+            return s.size() + INCR;
+        };
 
         if (f) {
 
