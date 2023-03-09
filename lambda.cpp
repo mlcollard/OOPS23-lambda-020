@@ -98,11 +98,17 @@ int main(int argc, char* argv[]) {
     // capture the number of times the function is executed
     {
         int numrun = 0;
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = [&numrun](std::string_view s) {
+
+            ++numrun;
+
+            return s.size() + 2;
+        };
 
         if (f) {
 
             assert(framework.apply(f, "a") == 3);
+            assert(numrun == 1);
         }
     }
 
