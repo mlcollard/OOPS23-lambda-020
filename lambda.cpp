@@ -144,7 +144,7 @@ int main(int argc, char* argv[]) {
     {
         Application application;
 
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = std::bind(&Application::apply, application, std::placeholders::_1);
 
         if (f) {
 
