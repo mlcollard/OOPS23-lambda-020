@@ -84,7 +84,10 @@ int main(int argc, char* argv[]) {
     // non-const variable capture value
     {
         int incr = 2;
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = [incr](std::string_view s) {
+
+            return s.size() + incr;
+        };
 
         if (f) {
 
